@@ -1,0 +1,24 @@
+---
+- name: update apt cache
+  apt: update_cache=yes
+
+- name: upgrade apt packages
+  apt: upgrade=dist
+
+- name: install packages
+  apt: name={{ item }} state=present
+  with_items: "{{ ubuntu_base_packages }}"
+
+- name: generate locales
+  locale_gen: name={{ item }} state=present
+  with_items: "{{ ubuntu_base_locales }}"
+  notify:
+    - reconfigure locales
+
+- name: set time zone
+  copy: content="{{ ubuntu_base_time_zone }}\n" dest=/etc/timezone owner=root group=root mode=0644 backup=yes
+  notify:
+    - reconfigure tzdata
+
+- include: ufw.yml
+  when: ubuntu_base_ufw_enabled|bool and true

@@ -1,0 +1,7 @@
+---
+- name: enable ufw
+  ufw: state=enabled policy=reject
+
+- name: set allowed ports
+  ufw: rule=allow port={{ item }}
+  with_items: "{{ ubuntu_base_ufw_ports }}"

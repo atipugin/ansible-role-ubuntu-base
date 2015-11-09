@@ -1,0 +1,18 @@
+---
+ubuntu_base_packages:
+  - build-essential
+  - curl
+  - git-core
+  - htop
+  - ntp
+  - wget
+
+ubuntu_base_locales:
+  - en_US.UTF-8
+
+ubuntu_base_time_zone: Europe/Moscow
+ubuntu_base_ufw_enabled: true
+ubuntu_base_ufw_ports:
+  - ssh
+  - 80
+  - 443

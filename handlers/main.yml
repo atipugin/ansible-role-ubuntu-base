@@ -1,0 +1,6 @@
+---
+- name: reconfigure locales
+  command: dpkg-reconfigure --frontend noninteractive locales
+
+- name: reconfigure tzdata
+  command: dpkg-reconfigure --frontend noninteractive tzdata
