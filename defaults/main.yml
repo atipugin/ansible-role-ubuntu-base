@@ -6,6 +6,8 @@ ubuntu_base_packages:
   - htop
   - ntp
   - wget
+  - ca-certificates
+  - locales
 
 ubuntu_base_locales:
   - en_US.UTF-8
